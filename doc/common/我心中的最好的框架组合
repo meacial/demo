@@ -1,0 +1,15 @@
+我心目中最好的框架组合是： 
+    表示层:spring mvc 3.1 + annotation 
+    控制层:spring 3.1 
+    持久层：hibernate 3.6 +jdbcTemplate 
+    后台列表控件：displaytag 1.2 
+    Ajax框架: DWR 3 
+    JS框架 ： Jquery 
+    缓存机制：spring 3.1 cache + ehcache/memcached 
+    静态化机制： Freemarker静态化/spring mvc伪静态化 
+    页面技术： EL + JSTL +JSP 
+    安全框架 spring security 
+    搜索引擎： Lucene 
+    中文分词：IKAnalyzer 
+    模板引擎： apache tiles 2.22 
+    --------》http://www.iteye.com/topic/1119514

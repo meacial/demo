@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="lib/apache/poi/poi-scratchpad-2.5.1-final-20040804.jar"/>
 	<classpathentry kind="lib" path="lib/apache/poi/poi-scratchpad-3.13-20150929.jar"/>
 	<classpathentry kind="lib" path="lib/jxl/jxl.jar"/>
+	<classpathentry kind="lib" path="lib/apache/Ikanalyzer/IKAnalyzer2012_u6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
