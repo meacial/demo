@@ -17,5 +17,7 @@
 	<classpathentry kind="lib" path="lib/apache/poi/poi-scratchpad-3.13-20150929.jar"/>
 	<classpathentry kind="lib" path="lib/jxl/jxl.jar"/>
 	<classpathentry kind="lib" path="lib/apache/Ikanalyzer/IKAnalyzer2012_u6.jar"/>
+	<classpathentry kind="lib" path="lib/netty/netty-all-5.0.0.Alpha2-sources.jar"/>
+	<classpathentry kind="lib" path="lib/netty/netty-all-5.0.0.Alpha2.jar" sourcepath="D:/maven-work/LocalRepository/repository/io/netty/netty-all/5.0.0.Alpha2/netty-all-5.0.0.Alpha2-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

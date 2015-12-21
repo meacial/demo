@@ -1,0 +1,21 @@
+问题：
+	在属性文件中添加Properties配置，值为中文。
+	在JAVA程序中，读取该配置以ISO8859-1读取，并且转换成GBK输出？
+
+做了好久的测试，将中文直接写在Properties文件中，测试时GBK输出为空或者乱码
+将Properties的中文替换为对应的UTF-8编码字符串，测试GBK输出为空或者乱码
+将Properties的中文替换为GBK编码字符串，测试GBK输出为空或者乱码
+
+最好，仔细一想，用ISO8859-1读取，那么必须将该中文，转换为ISO8859-1的编码格式字符串
+最后终于解决：http://blog.csdn.net/lijiastone/article/details/8435581
+将中文写入一个文件zh.txt中，在Windows 命令行中，执行native2ascii -encoding ISO8859-1 zh.txt
+命令行输出即为iso8859-1的编码字符串，将字符串替换Properties中中文字符，测试通过。
+
+中文字符
+name=联动优势电子商务有限公司
+
+native2ascii -encoding ISO8859-1 zh.txt
+屏幕输出：\u00c1\u00aa\u00b6\u00af\u00d3\u00c5\u00ca\u00c6\u00b5\u00e7\u00d7\u00d3\u00c9\u00cc\u00ce\u00f1\u00d3\u00d0\u00cf\u00de\u00b9\u00ab\u00cb\u00be
+最后：
+System.out.println(new String("\u00c1\u00aa\u00b6\u00af\u00d3\u00c5\u00ca\u00c6\u00b5\u00e7\u00d7\u00d3\u00c9\u00cc\u00ce\u00f1\u00d3\u00d0\u00cf\u00de\u00b9\u00ab\u00cb\u00be".getBytes("iso-8859-1"),"GBK"));
+

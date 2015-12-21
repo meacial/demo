@@ -1,0 +1,40 @@
+beego
+
+git:
+	https://github.com/astaxie/beego
+office:
+	http://beego.me/
+
+beego是一个用Go开发的应用框架，思路来自于tornado，路由设计来源于sinatra，支持如下特性
+	MVC
+	REST
+	智能路由
+	日志调试
+	配置管理
+	模板自动渲染
+	layout设计
+	中间件插入逻辑
+	方便的JSON/XML服务
+
+官网 http://beego.me
+
+快速入门代码如下所示：
+
+package main
+ 
+import (
+    "github.com/astaxie/beego"
+)
+ 
+type MainController struct {
+    beego.Controller
+}
+ 
+func (this *MainController) Get() {
+    this.Ctx.WriteString("hello world")
+}
+ 
+func main() {
+    beego.Router("/", &MainController{})
+    beego.Run()
+}
