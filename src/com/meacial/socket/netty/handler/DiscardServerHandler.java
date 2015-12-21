@@ -3,7 +3,10 @@ package com.meacial.socket.netty.handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+<<<<<<< HEAD
 import io.netty.util.ReferenceCountUtil;
+=======
+>>>>>>> origin/master
 
 /**
  * </pre>DISCARD服务(丢弃服务，指的是会忽略所有接收的数据的一种协议)
@@ -20,7 +23,11 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg)
 			throws Exception {
 		// Discard the recived message silently.
+<<<<<<< HEAD
 		((ByteBuf) msg).release(); // 为了测试服务器能正常接受数据，我们将这里注释掉
+=======
+		((ByteBuf) msg).release();
+>>>>>>> origin/master
 		
 		/*
 		 * ByteBuf是一个引用计数对象，这个对象必须显示的调用release()方法。
@@ -36,6 +43,7 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
 			}
 		 * 
 		 */
+<<<<<<< HEAD
 		
 		
 		// 为了测试服务器能正常接受数据，我们这里坐下调整
@@ -48,6 +56,8 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
 //		} finally {
 //			ReferenceCountUtil.release(msg);
 //		}
+=======
+>>>>>>> origin/master
 	}
 
 	
