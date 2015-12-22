@@ -5,7 +5,6 @@ import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.ReferenceCountUtil;
 
-
 /**
  * </pre>DISCARD服务(丢弃服务，指的是会忽略所有接收的数据的一种协议)
  * Handles a server-side channel
@@ -36,8 +35,6 @@ public class DiscardServerHandler extends ChannelHandlerAdapter {
 			        ReferenceCountUtil.release(msg);
 			    }
 			}
-		 * 
-		 */
 		
 		
 		// 为了测试服务器能正常接受数据，我们这里坐下调整

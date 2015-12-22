@@ -13,8 +13,7 @@ import java.util.Scanner;
  * 比如数据库连接，网络连接等），try-with-resources 是一个定义了一个或多个资源的try 声明，try语句在该语句结束时自动关闭这些资源。
  * try-with-resources确保每一个资源在处理完成后都会被关闭。这些资源必须实现AutoCloseable或者Closeable接口，实现这两个接口就必须实现close() 方法。
  * 示例如下：
- * 
- * 
+ *
  * 一个try-with-resourcse声明了包含两个对象的声明，用分号隔开（某些书里错写成了逗号）。和声明一个对象相同，会在结束后自动调用close方法。 此外，try-with-resources 可以跟catch和finally，catch和finally中的对象是在try-with-resources里声明的对象关闭之后才执行（并不建议这样）。如果try块和close块都抛出一个异常，那么close块的异常将会“被抑制”。这些异常将会自动捕获，并由addSuppressed方法增加到原来的异常。如果对这个异常感兴趣，可以调用getSuppressed方法，将会得到从close方法抛出并被抑制的异常列表。
 
         jdk1.7之后新增加了几个API：
@@ -30,12 +29,11 @@ import java.util.Scanner;
  * 
  */
 public class TryBlockWithResource {
-
 	public static void main(String[] args) throws FileNotFoundException {
 		
 		try(Scanner in = new Scanner(new File("in.file"));PrintWriter out = new PrintWriter(new File("out.file"))) {
 			while(in.hasNext())
 				out.println(in.next().toUpperCase());
 		}
-	}
+		}
 }
