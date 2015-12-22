@@ -1,0 +1,29 @@
+java对字符的处理 
+
+在java应用软件中，会有多处涉及到字符集编码，有些地方需要进行正确的设置，有些地方需要进行一定程度的处理。 
+
+getBytes(charset) 这是java字符串处理的一个标准函数，其作用是将字符串所表示的字符按照charset编码，并以字节方式表示。
+注意字符串在java内存中总是按unicode编码存储的。
+比如"中文"，正常情况下（即没有错误的时候）存储为"4e2d 6587"，
+如果charset为"gbk"，则被编码为"d6d0 cec4"，然后返回字节"d6 d0 ce c4"。
+如果charset为"utf8"，则最后是"e4 b8 ad e6 96 87"。
+如果是"iso8859-1"，则由于无法编码，最后返回 "3f 3f"（两个问号）。 
+
+
+ new String(byte[],charset) 
+ 这是java字符串处理的另一个标准函数，和上一个函数的作用相反，将字节数组按照charset编码进行组合识别，最后转换为unicode存储。
+ 参考上述getBytes的例子，"gbk" 和"utf8"都可以得出正确的结果"4e2d 6587"，但iso8859-1最后变成了"003f 003f"（两个问号）。 
+因为utf8可以用来表示/编码所有字符，所以new String( str.getBytes( "utf8" ), "utf8" ) === str，即完全可逆。 
+
+setCharacterEncoding()
+对于request，是指提交内容的编码，指定后可以通过getParameter()则直接获得正确的字符串，如果不指定，则默认使用iso8859-1编码，需要进一步处理。
+参见下述"表单输入"。值得注意的是在执行setCharacterEncoding()之前，不能执行任何getParameter()。
+java doc上说明：This method must be called prior to reading request parameters or reading input using getReader()。
+而且，该指定只对POST方法有效，对GET方法无效。分析原因，应该是在执行第一个getParameter()的时候，java将会按照编码分析所有的提交内容，而后续的getParameter()不再进行分析，所以setCharacterEncoding()无效。
+而对于GET方法提交表单是，提交的内容在URL中，一开始就已经按照编码分析所有的提交内容，setCharacterEncoding()自然就无效。
+
+iso-8859-1是JAVA网络传输使用的标准 字符集,而gb2312是标准中文字符集,当你作出提交表单等需要网络传输的操作的时候,
+就需要把 iso-8859-1转换为gb2312字符集显示,否则如果按浏览器的gb2312格式来解释iso-8859-1字符集的话,由于2者不兼容,所以会 是乱码.
+
+
+

@@ -1,0 +1,13 @@
+规律：
+ utf-8编码可以用gbk和iso8859-1解码后编回去
+gbk编码后只能用iso8859-1解码后编回去
+
+在JSP页面获取表单的值时会出现乱码，有两种解决方法：
+
+一种是在调用getParameter之前通过request.setCharacterEncoding设置字符编码，
+另一种是调用new String(str.getBytes("iso8859-1"), "UTF-8");
+编码后解码，这两种方法都可以得到正确的结果
+
+
+转码工具：
+	http://tool.chinaz.com/Tools/Unicode.aspx

@@ -1,0 +1,4 @@
+ASCII：
+	它的全称是American Standard Code for Information Interchange（美国信息交换标准代码），是一个7位字符编码方案
+ISO-8859-1:
+	ISO-8859-1又称Latin-1，是一个8位单字节字符集，它把ASCII的最高位也利用起来，并兼容了ASCII，新增的理论空间是128，但它并没有完全用完
