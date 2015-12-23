@@ -1,0 +1,186 @@
+1 常用Java注释标签（Java comment tags）
+
+@author  作者
+
+@param  输入参数的名称  说明
+
+@return 输出参数说明
+
+@since JDK版本
+
+@version 版本号
+
+@see 链接目标
+
+@throws 异常
+
+@deprecated 解释
+
+@link 链接地址
+
+2 Java注释的使用顺序
+
+3 简单常见的HTML嵌入
+
+4 HTML嵌入注释范例
+
+
+5 参考文档
+
+ 
+
+1   常用Java注释标签（Java comment tags）
+
+@author  作者
+
+适用范围：文件、类、方法
+
+（*多个作者使用多个@author标签标识，java doc中显示按输入时间顺序罗列。）
+
+例：* @author Leo. Yao
+
+ 
+
+@param  输入参数的名称  说明
+
+适用范围：方法
+
+例：* @param str the String用来存放输出信息。
+
+ 
+
+@return 输出参数说明
+
+适用范围：方法
+
+例：     * @return    <code>true</code>执行成功;
+
+  *                 <code>false</code>执行失败.
+
+ 
+
+@since JDK版本
+
+用于标识编译该文件所需要的JDK环境。
+
+适用范围：文件、类
+
+例：     * @since JDK1.6
+
+ 
+
+@version 版本号
+
+用于标识注释对象的版本号
+
+适用范围：文件、类、方法
+
+例：     * @version 1.0
+
+ 
+
+@see 链接目标
+
+表示参考。会在java 文档中生成一个超链接，链接到参考的类容。使用中的感觉是@see不需要包路径，对我这种懒人比较喜欢，相对{@link }这种既要加大括号，有需要包路径，我还是选择偷懒，当然你要是不介意使用import导入要link的类，那就可以达到@see的效果，所以总体来说，还是选择@see，当然两个在特殊场合下还是用法不一样的
+
+用法：
+
+@see #field
+
+   @see #Constructor(Type, Type...)
+
+   @see #Constructor(Type id, Type id...)
+
+   @see #method(Type, Type,...)
+
+   @see #method(Type id, Type, id...)
+
+   @see Class
+
+   @see Class#field
+
+   @see Class#Constructor(Type, Type...)
+
+   @see Class#Constructor(Type id, Type id)
+
+   @see Class#method(Type, Type,...)
+
+   @see Class#method(Type id, Type id,...)
+
+   @see package.Class
+
+   @see package.Class#field
+
+   @see package.Class#Constructor(Type, Type...)
+
+   @see package.Class#Constructor(Type id, Type id)
+
+   @see package.Class#method(Type, Type,...)
+
+   @see package.Class#method(Type id, Type, id)
+
+   @see package
+
+ 
+
+@throws 异常
+
+标识出方法可能抛出的异常
+
+适用范围：方法
+
+例：     * @throws IOException  If an input or output exception occurred
+
+ 
+
+@deprecated 解释
+
+标识对象过期
+
+适用范围：文件、类、方法
+
+ 
+
+@link 链接地址
+
+链接到一个目标，用法类似@see。但常放在注释的解释中形如{@link …}
+
+例：
+
+/**
+
+ * @deprecated      As of JDK 1.1, replaced by
+
+ *                         {@link #setBounds(int,int,int,int)}
+
+ */
+
+2 Java注释的使用顺序
+
+* @author      (classes and interfaces only, required)
+
+* @version     (classes and interfaces only, required. See footnote 1)
+
+* @param       (methods and constructors only)
+
+* @return      (methods only)
+
+* @exception   (@throws is a synonym added in Javadoc 1.2)
+
+* @see        
+
+* @since      
+
+* @serial      (or @serialField or @serialData)
+
+* @deprecated  (see How and When To Deprecate APIs)
+
+ 
+
+ 
+
+3 简单常见的HTML嵌入
+
+<P> 用于分段
+
+<code>  标签用于表示计算机源代码或者其他机器可以阅读的文本内容。<code> 标签就是为软件代码的编写者设计的。包含在该标签内的文本将用等宽、类似电传打字机样式的字体（Courier）显示出来只应该在表示计算机程序源代码或者其他机器可以阅读的文本内容上使用 <code> 标签。虽然<code> 标签通常只是把文本变成等宽字体，但它暗示着这段文本是源程序代码。将来的浏览器有可能会加入其他显示效果。例如，程序员的浏览器可能会寻找 <code> 片段，并执行某些额外的文本格式化处理，如循环和条件判断语句的特殊缩进等。

@@ -1,0 +1,44 @@
+ASCII:
+	将一个字符，编码成由一个字节的7个bit位表示的十六进制数表示
+ISO8859-1（ASCII的升级版）：
+	将一个字符，编码成有一个字节8个bit位标识的十六进制数表示
+UNICODE:
+	定长双字节编码，就是将一个字符，编码成有2个字节16个bit位表示的十六进制数表示
+	
+
+例如：
+	字符a:
+	ASSCII码：	0x61		97
+	ISO8859-1码：0x61			97
+	UNICODE码：      0x00 0x61	97
+	
+	
+1、每一个Unicode字符要么属于BMP，要么属于增补字符。
+2、BMP就是Unicode原有的16位设计来表示的字符，这组字符U +0000至U+ FFFF
+3、增补字符range U+10000 to U+10FFFF
+4、java中，一个字符对应一个char，对于特殊的字符，则对应2个char，也就是说java中我们所说的字符char类型数据不能一一对应的。
+5、char类型在java中一个char占2个字节byte，所以一个一般字符的unicode码是16位表示，也可以理解java内部用unicode存储char字符
+6、我们在处理java的编码问题时，要分清楚三个概念：Java采用的编码：unicode(就是说编译的时候会编译成unicode)，JVM平台默认字符集和外部资源的编码。
+
+
+相关方法：
+Character.toChars(int)
+String.toCharArray();
+对于一个字符串，
+jdk会将该字符串，存储在char数组中.String.length()方法，就是返回的该字符串对应的char数据的大小，一个汉字有时候可能长度是2奥，比如{"𡀀".length() +","+"𡀀".toCharArray().length}
+
+UTF-8，UTF-16,UTF-32都是UNICODE的编码实现方式：
+UTF-32就是原始的UNICODE编码，4个字节标识一个字符
+UTF-16用2个字节标识一个字符，应为大多数的字符编码不会超过2个字节
+UTF-8是针对UNICODE的可变成都的字符编码
+就是说基于UNICODE,字节数为1-4个字节
+
+
+	
+	
+	
+	ava 规定好的占两个字节。
+首先，要搞清楚 code point 和 encoding 的区别。Java 是遵循 unicode 4.0 标准的，而内部的 character 以 utf-16 作为 encoding。unicode 4.0 标准包含从 U+0000-U+FFFF 的基本多语言平面和 U+10000-U+10FFFF 的扩展平面的文字，这是 code point。Java 的 char 类型是 16 bit 的，所以单个 char 只支持基本平面内的文字，而扩展平面的文字是由一对 char 来表示的。 
+
+而 String.getBytes() 这个方法是按照指定的 encoding 返回字符串，一般中文系统的默认编码是 utf-8 (linux, mac) 或者 gbk/gb18030 (windows)。只要是基本平面内的文字，utf-8码的中文都是3字节的，而 gbk/gbk18030 是2字节的。英文编码是一个字节的。
+	
